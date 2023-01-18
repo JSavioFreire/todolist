@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:todolist/widgets/tasks/eachtask_home.dart';
+import 'package:todolist/data/pay/task_pay_db.dart';
+import 'package:todolist/widgets/tasks/eachtask_pay.dart';
 
-import '../../data/work/task_work_db.dart';
-import '../../widgets/tasks/eachtask_work.dart';
-
-class FormScreenWork extends StatelessWidget {
-  FormScreenWork({super.key});
+class FormScreenPay extends StatelessWidget {
+  FormScreenPay({super.key});
 
   TextEditingController nameController = TextEditingController();
   TextEditingController aboutController = TextEditingController();
-  TextEditingController clientController = TextEditingController();
-  TextEditingController dateController = TextEditingController();
+  TextEditingController vencController = TextEditingController();
+  TextEditingController valueController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +28,7 @@ class FormScreenWork extends StatelessWidget {
                   decoration: InputDecoration(
                     fillColor: Colors.blue[100],
                     filled: true,
-                    hintText: 'Título da anotação',
+                    hintText: 'Título',
                     enabledBorder: OutlineInputBorder(
                         borderSide:
                             const BorderSide(width: 0, color: Colors.white),
@@ -44,12 +42,12 @@ class FormScreenWork extends StatelessWidget {
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: TextFormField(
-                        keyboardType: TextInputType.name,
-                        controller: clientController,
+                        keyboardType: TextInputType.number,
+                        controller: valueController,
                         decoration: InputDecoration(
                           fillColor: Colors.blue[100],
                           filled: true,
-                          hintText: 'cliente',
+                          hintText: 'Valor da conta',
                           enabledBorder: OutlineInputBorder(
                               borderSide: const BorderSide(
                                   width: 0, color: Colors.white),
@@ -62,12 +60,12 @@ class FormScreenWork extends StatelessWidget {
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: TextFormField(
-                        controller: dateController,
+                        controller: vencController,
                         keyboardType: TextInputType.datetime,
                         decoration: InputDecoration(
                           fillColor: Colors.blue[100],
                           filled: true,
-                          hintText: 'prazo de entrega',
+                          hintText: 'Vencimento',
                           enabledBorder: OutlineInputBorder(
                               borderSide: const BorderSide(
                                   width: 0, color: Colors.white),
@@ -88,7 +86,7 @@ class FormScreenWork extends StatelessWidget {
                   decoration: InputDecoration(
                     fillColor: Colors.blue[100],
                     filled: true,
-                    hintText: 'Sobre a anotação',
+                    hintText: 'Sobre a conta',
                     enabledBorder: OutlineInputBorder(
                         borderSide:
                             const BorderSide(width: 0, color: Colors.white),
@@ -100,11 +98,11 @@ class FormScreenWork extends StatelessWidget {
                   padding: const EdgeInsets.all(8.0),
                   child: ElevatedButton(
                     onPressed: () async {
-                      TaskWorkDao().save(EachTaskWork(
+                      TaskPayDao().save(EachTaskPay(
                         name: nameController.text,
                         about: aboutController.text,
-                        client: clientController.text,
-                        date: dateController.text,
+                        value: valueController.text,
+                        venc: vencController.text,
                       ));
                       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                           content: Text('Anotação salva com sucesso!')));

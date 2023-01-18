@@ -23,10 +23,14 @@ class FormScreenHome extends StatelessWidget {
                 child: TextFormField(
                   controller: nameController,
                   decoration: InputDecoration(
-                      fillColor: Colors.blue[100],
-                      filled: true,
-                      hintText: 'Título da anotação',
-                      border: InputBorder.none),
+                    fillColor: Colors.blue[100],
+                    filled: true,
+                    hintText: 'Título da anotação',
+                    enabledBorder: OutlineInputBorder(
+                        borderSide:
+                            const BorderSide(width: 0, color: Colors.white),
+                        borderRadius: BorderRadius.circular(5)),
+                  ),
                 ),
               ),
               Padding(
@@ -37,10 +41,14 @@ class FormScreenHome extends StatelessWidget {
                   minLines: 12,
                   keyboardType: TextInputType.multiline,
                   decoration: InputDecoration(
-                      fillColor: Colors.blue[100],
-                      filled: true,
-                      hintText: 'Sobre a anotação',
-                      border: InputBorder.none),
+                    fillColor: Colors.blue[100],
+                    filled: true,
+                    hintText: 'Sobre a anotação',
+                    enabledBorder: OutlineInputBorder(
+                        borderSide:
+                            const BorderSide(width: 0, color: Colors.white),
+                        borderRadius: BorderRadius.circular(5)),
+                  ),
                 ),
               ),
               Padding(

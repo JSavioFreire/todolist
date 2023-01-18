@@ -1,29 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:todolist/data/pay/task_pay_db.dart';
+import 'package:todolist/screens/form/form_screen_pay.dart';
 import 'package:todolist/widgets/boxHowAdd/box_how_add.dart';
-import 'package:todolist/widgets/loading/loading.dart';
-import '../../data/work/task_work_db.dart';
-import '../../widgets/tasks/eachtask_work.dart';
-import '../form/form_screen_work.dart';
+import 'package:todolist/widgets/tasks/eachtask_pay.dart';
+import '../../widgets/loading/loading.dart';
 
-class WorkScreen extends StatefulWidget {
-  const WorkScreen({super.key});
+class PayScreen extends StatefulWidget {
+  const PayScreen({super.key});
 
   @override
-  State<WorkScreen> createState() => _WorkScreenState();
+  State<PayScreen> createState() => _PayScreenState();
 }
 
-class _WorkScreenState extends State<WorkScreen> {
+class _PayScreenState extends State<PayScreen> {
   void refresh() {
     setState(() {});
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: FutureBuilder<List<EachTaskWork>>(
-          future: TaskWorkDao().findAll(),
+      body: FutureBuilder<List<EachTaskPay>>(
+          future: TaskPayDao().findAll(),
           builder: ((context, snapshot) {
-            List<EachTaskWork>? item = snapshot.data;
+            List<EachTaskPay>? item = snapshot.data;
             switch (snapshot.connectionState) {
               case ConnectionState.none:
                 const LoadingWidget();
@@ -40,7 +39,7 @@ class _WorkScreenState extends State<WorkScreen> {
                     return ListView.builder(
                         itemCount: item.length,
                         itemBuilder: (context, index) {
-                          final EachTaskWork eachTask = item[index];
+                          final EachTaskPay eachTask = item[index];
                           return eachTask;
                         });
                   }
@@ -71,7 +70,7 @@ class _WorkScreenState extends State<WorkScreen> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => FormScreenWork()))
+                  MaterialPageRoute(builder: (context) => FormScreenPay()))
               .then((value) {
             refresh();
           });

@@ -1,35 +1,35 @@
 import 'package:sqflite/sqflite.dart';
-import '../../widgets/tasks/eachtask_work.dart';
-import 'open_db_work.dart';
+import 'package:todolist/data/pay/open_db_pay.dart';
+import 'package:todolist/widgets/tasks/eachtask_pay.dart';
 
-class TaskWorkDao {
+class TaskPayDao {
   static const String database = 'CREATE TABLE $tableName('
       '$name TEXT, '
-      '$client TEXT, '
-      '$date TEXT, '
+      '$venc TEXT, '
+      '$value TEXT, '
       '$about TEXT)';
 
   static const tableName = 'taskHomeTable';
 
   static const String name = 'name';
   static const String about = 'about';
-  static const String client = 'client';
-  static const String date = 'date';
+  static const String venc = 'venc';
+  static const String value = 'value';
 
-  save(EachTaskWork newTask) async {
-    final Database dataBase = await getDataBaseWork();
+  save(EachTaskPay newTask) async {
+    final Database dataBase = await getDataBasePay();
     Map<String, dynamic> newTaskMap = toMap(newTask);
     return await dataBase.insert(tableName, newTaskMap);
   }
 
-  Future<List<EachTaskWork>> findAll() async {
-    final Database dataBase = await getDataBaseWork();
+  Future<List<EachTaskPay>> findAll() async {
+    final Database dataBase = await getDataBasePay();
     final List<Map<String, dynamic>> result = await dataBase.query(tableName);
     return toList(result);
   }
 
   delete(String taskName) async {
-    final Database dataBase = await getDataBaseWork();
+    final Database dataBase = await getDataBasePay();
     return dataBase.delete(
       tableName,
       where: '$name = ?',
@@ -37,23 +37,23 @@ class TaskWorkDao {
     );
   }
 
-  Map<String, dynamic> toMap(EachTaskWork eachTask) {
+  Map<String, dynamic> toMap(EachTaskPay eachTask) {
     final Map<String, dynamic> taskMap = {};
     taskMap[name] = eachTask.name;
     taskMap[about] = eachTask.about;
-    taskMap[client] = eachTask.client;
-    taskMap[date] = eachTask.date;
+    taskMap[venc] = eachTask.venc;
+    taskMap[value] = eachTask.value;
     return taskMap;
   }
 
-  List<EachTaskWork> toList(List<Map<String, dynamic>> taskMap) {
-    final List<EachTaskWork> taskList = [];
+  List<EachTaskPay> toList(List<Map<String, dynamic>> taskMap) {
+    final List<EachTaskPay> taskList = [];
     for (Map<String, dynamic> eachTask in taskMap) {
-      final EachTaskWork tasks = EachTaskWork(
+      final EachTaskPay tasks = EachTaskPay(
         name: eachTask['name'],
         about: eachTask['about'],
-        client: eachTask['client'],
-        date: eachTask['date'],
+        venc: eachTask['venc'],
+        value: eachTask['value'],
       );
       taskList.add(tasks);
     }

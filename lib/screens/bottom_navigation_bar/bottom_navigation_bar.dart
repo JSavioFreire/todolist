@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todolist/screens/home/home_screen.dart';
+import 'package:todolist/screens/payments/pay_screen.dart';
 import 'package:todolist/screens/work/work_screen.dart';
 
 class BottomNavigationBarCustom extends StatefulWidget {
@@ -16,9 +17,7 @@ class _BottomNavigationBarCustom extends State<BottomNavigationBarCustom> {
   static const List<Widget> _widgetOptions = <Widget>[
     HomeScreen(),
     WorkScreen(),
-    Text(
-      'Index 2: School',
-    ),
+    PayScreen(),
     Text(
       'Index 3: Settings',
     ),
@@ -56,8 +55,8 @@ class _BottomNavigationBarCustom extends State<BottomNavigationBarCustom> {
             backgroundColor: Colors.blue[800],
           ),
           BottomNavigationBarItem(
-            icon: const Icon(Icons.shopping_bag),
-            label: 'Compras',
+            icon: const Icon(Icons.dataset),
+            label: 'Arquivadas',
             backgroundColor: Colors.blue[900],
           ),
         ],

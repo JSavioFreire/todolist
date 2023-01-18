@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 
-class ListWork extends StatelessWidget {
+class ListPay extends StatelessWidget {
   final String title;
   final String about;
-  final String client;
-  final String date;
-  const ListWork(
+  final String value;
+  final String venc;
+
+  const ListPay(
       {super.key,
       required this.title,
       required this.about,
-      required this.client,
-      required this.date});
+      required this.value,
+      required this.venc});
 
   @override
   Widget build(BuildContext context) {
@@ -35,14 +36,14 @@ class ListWork extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Trabalho:',
+                          'Título:',
                           style: TextStyle(
                             fontSize: 15,
                             color: Colors.grey[600],
                           ),
                         ),
                         SizedBox(
-                            width: MediaQuery.of(context).size.width * 0.70,
+                            width: MediaQuery.of(context).size.width * 0.5,
                             child: title.isNotEmpty
                                 ? Text(
                                     title,
@@ -53,7 +54,7 @@ class ListWork extends StatelessWidget {
                                         overflow: TextOverflow.ellipsis),
                                   )
                                 : Text(
-                                    '(Tarefa Sem nome)',
+                                    '(Conta sem nome)',
                                     style: TextStyle(
                                         color: Colors.grey[800],
                                         fontSize: 18,
@@ -66,19 +67,19 @@ class ListWork extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
                         Text(
-                          'Prazo',
+                          'Valor',
                           style: TextStyle(
                             fontSize: 15,
                             color: Colors.grey[600],
                           ),
                         ),
                         Text(
-                          date.isNotEmpty ? date : 'Indefinido',
-                          style: TextStyle(
-                            fontWeight: FontWeight.w600,
-                            color: Colors.grey[900],
-                          ),
+                          value.isNotEmpty ? value : 'Indefinido',
                           overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                              fontWeight: FontWeight.w600,
+                              color: Colors.grey[900],
+                              fontSize: 20),
                         )
                       ],
                     )
@@ -91,7 +92,7 @@ class ListWork extends StatelessWidget {
                     Column(
                       children: [
                         SizedBox(
-                            width: MediaQuery.of(context).size.width * 0.6,
+                            width: MediaQuery.of(context).size.width * 0.5,
                             child: about.isNotEmpty
                                 ? Text(
                                     about,
@@ -112,24 +113,24 @@ class ListWork extends StatelessWidget {
                       ],
                     ),
                     SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.30,
+                      width: MediaQuery.of(context).size.width * 0.40,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
                           Text(
-                            'Cliente:',
+                            'Vencimento:',
                             style: TextStyle(
                               fontSize: 15,
                               color: Colors.grey[600],
                             ),
                           ),
                           Text(
-                            client.isNotEmpty ? client : 'Indefinido',
-                            overflow: TextOverflow.ellipsis,
+                            venc.isNotEmpty ? venc : 'Indefinido',
                             style: TextStyle(
                               fontWeight: FontWeight.w600,
                               color: Colors.grey[900],
                             ),
+                            overflow: TextOverflow.ellipsis,
                           )
                         ],
                       ),

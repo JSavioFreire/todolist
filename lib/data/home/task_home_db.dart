@@ -3,7 +3,7 @@ import 'package:todolist/widgets/tasks/eachtask_home.dart';
 import 'open_db_home.dart';
 
 class TaskHomeDao {
-  static const String taskhomedatabase = 'CREATE TABLE $tableName('
+  static const String database = 'CREATE TABLE $tableName('
       '$name TEXT, '
       '$about TEXT)';
 

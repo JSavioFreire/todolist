@@ -1,16 +1,9 @@
 import 'package:flutter/material.dart';
 
-class ListWork extends StatelessWidget {
-  final String title;
+class ListHome extends StatelessWidget {
+  final String name;
   final String about;
-  final String client;
-  final String date;
-  const ListWork(
-      {super.key,
-      required this.title,
-      required this.about,
-      required this.client,
-      required this.date});
+  const ListHome({super.key, required this.name, required this.about});
 
   @override
   Widget build(BuildContext context) {
@@ -35,17 +28,17 @@ class ListWork extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Trabalho:',
+                          'Anotação:',
                           style: TextStyle(
                             fontSize: 15,
                             color: Colors.grey[600],
                           ),
                         ),
                         SizedBox(
-                            width: MediaQuery.of(context).size.width * 0.70,
-                            child: title.isNotEmpty
+                            width: MediaQuery.of(context).size.width * 0.8,
+                            child: name.isNotEmpty
                                 ? Text(
-                                    title,
+                                    name,
                                     style: TextStyle(
                                         color: Colors.grey[900],
                                         fontSize: 18,
@@ -62,26 +55,6 @@ class ListWork extends StatelessWidget {
                                   )),
                       ],
                     ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      children: [
-                        Text(
-                          'Prazo',
-                          style: TextStyle(
-                            fontSize: 15,
-                            color: Colors.grey[600],
-                          ),
-                        ),
-                        Text(
-                          date.isNotEmpty ? date : 'Indefinido',
-                          style: TextStyle(
-                            fontWeight: FontWeight.w600,
-                            color: Colors.grey[900],
-                          ),
-                          overflow: TextOverflow.ellipsis,
-                        )
-                      ],
-                    )
                   ],
                 ),
                 Row(
@@ -91,7 +64,7 @@ class ListWork extends StatelessWidget {
                     Column(
                       children: [
                         SizedBox(
-                            width: MediaQuery.of(context).size.width * 0.6,
+                            width: MediaQuery.of(context).size.width * 0.9,
                             child: about.isNotEmpty
                                 ? Text(
                                     about,
@@ -111,29 +84,6 @@ class ListWork extends StatelessWidget {
                                   ))
                       ],
                     ),
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.30,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          Text(
-                            'Cliente:',
-                            style: TextStyle(
-                              fontSize: 15,
-                              color: Colors.grey[600],
-                            ),
-                          ),
-                          Text(
-                            client.isNotEmpty ? client : 'Indefinido',
-                            overflow: TextOverflow.ellipsis,
-                            style: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              color: Colors.grey[900],
-                            ),
-                          )
-                        ],
-                      ),
-                    )
                   ],
                 )
               ],
