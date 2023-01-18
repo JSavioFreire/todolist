@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todolist/screens/home/home_screen.dart';
+import 'package:todolist/screens/payed/payed_screen.dart';
 import 'package:todolist/screens/payments/pay_screen.dart';
 import 'package:todolist/screens/work/work_screen.dart';
 
@@ -18,9 +19,7 @@ class _BottomNavigationBarCustom extends State<BottomNavigationBarCustom> {
     HomeScreen(),
     WorkScreen(),
     PayScreen(),
-    Text(
-      'Index 3: Settings',
-    ),
+    PayedScreen()
   ];
 
   void _onItemTapped(int index) {
@@ -55,8 +54,8 @@ class _BottomNavigationBarCustom extends State<BottomNavigationBarCustom> {
             backgroundColor: Colors.blue[800],
           ),
           BottomNavigationBarItem(
-            icon: const Icon(Icons.dataset),
-            label: 'Arquivadas',
+            icon: const Icon(Icons.money_off),
+            label: 'Contas pagas',
             backgroundColor: Colors.blue[900],
           ),
         ],

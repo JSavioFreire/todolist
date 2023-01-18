@@ -1,24 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:todolist/data/work/task_work_db.dart';
-import 'package:todolist/widgets/listTile/list_work.dart';
+import 'package:todolist/data/pay/task_pay_db.dart';
+import 'package:todolist/data/payed/task_payed_db.dart';
+import 'package:todolist/widgets/listTile/list_pay.dart';
 
-class EachTaskWork extends StatefulWidget {
+class EachTaskPayed extends StatefulWidget {
   final String name;
   final String about;
-  final String client;
-  final String date;
-  const EachTaskWork(
+  final String value;
+  final String venc;
+  const EachTaskPayed(
       {required this.name,
       required this.about,
       super.key,
-      required this.client,
-      required this.date});
+      required this.value,
+      required this.venc});
 
   @override
-  State<EachTaskWork> createState() => _EachTaskState();
+  State<EachTaskPayed> createState() => _EachTaskPayedState();
 }
 
-class _EachTaskState extends State<EachTaskWork> {
+class _EachTaskPayedState extends State<EachTaskPayed> {
   @override
   Widget build(BuildContext context) {
     return Dismissible(
@@ -27,7 +28,7 @@ class _EachTaskState extends State<EachTaskWork> {
           color: Colors.red,
           child: const Align(
             alignment: Alignment(0.9, 0),
-            child: Icon(Icons.delete, color: Colors.white),
+            child: Icon(Icons.delete, size: 30, color: Colors.white),
           ),
         ),
         direction: DismissDirection.endToStart,
@@ -58,15 +59,16 @@ class _EachTaskState extends State<EachTaskWork> {
         },
         onDismissed: (direction) {
           if (direction == DismissDirection.endToStart) {
-            TaskWorkDao().delete(widget.name);
-            ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('Anotação excluída!')));
+            TaskPayedDao().delete(widget.name);
+            ScaffoldMessenger.of(context)
+                .showSnackBar(const SnackBar(content: Text('Conta excluída!')));
           }
         },
-        child: ListWork(
-            title: widget.name,
-            about: widget.about,
-            client: widget.client,
-            date: widget.date));
+        child: ListPay(
+          title: widget.name,
+          about: widget.about,
+          value: widget.value,
+          venc: widget.venc,
+        ));
   }
 }

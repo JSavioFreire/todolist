@@ -17,13 +17,46 @@ class _EachTaskHomeState extends State<EachTaskHome> {
     return Dismissible(
         key: UniqueKey(),
         background: Container(
-          color: Colors.red,
+          color: Colors.green,
           child: const Align(
             alignment: Alignment(-0.9, 0),
             child: Icon(Icons.delete, color: Colors.white),
           ),
         ),
-        onDismissed: (direction) {
+        secondaryBackground: Container(
+          color: Colors.red,
+          child: const Align(
+            alignment: Alignment(0.9, 0),
+            child: Icon(Icons.delete, color: Colors.white),
+          ),
+        ),
+        direction: DismissDirection.endToStart,
+        confirmDismiss: (direction) {
+          return showDialog(
+            context: context,
+            builder: (context) => AlertDialog(
+              title: const Text('Você tem certeza?'),
+              content: const Text(
+                'Você deseja mesmo deletar essa anotação?',
+              ),
+              actions: <Widget>[
+                ElevatedButton(
+                  child: const Text('Não'),
+                  onPressed: () {
+                    Navigator.of(context).pop(false);
+                  },
+                ),
+                ElevatedButton(
+                  child: const Text('Sim'),
+                  onPressed: () {
+                    Navigator.of(context).pop(true);
+                  },
+                ),
+              ],
+            ),
+          );
+        },
+        onDismissed: (directions) {
           TaskHomeDao().delete(widget.name);
           ScaffoldMessenger.of(context).showSnackBar(
               const SnackBar(content: Text('Anotação excluída!')));
