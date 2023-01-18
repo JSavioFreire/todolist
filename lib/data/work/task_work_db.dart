@@ -5,12 +5,16 @@ import 'open_db_work.dart';
 class TaskWorkDao {
   static const String taskhomedatabase = 'CREATE TABLE $tableName('
       '$name TEXT, '
+      '$client TEXT, '
+      '$date TEXT, '
       '$about TEXT)';
 
   static const tableName = 'taskHomeTable';
 
   static const String name = 'name';
   static const String about = 'about';
+  static const String client = 'client';
+  static const String date = 'date';
 
   save(EachTaskWork newTask) async {
     final Database dataBase = await getDataBaseWork();
@@ -37,14 +41,20 @@ class TaskWorkDao {
     final Map<String, dynamic> taskMap = {};
     taskMap[name] = eachTask.name;
     taskMap[about] = eachTask.about;
+    taskMap[client] = eachTask.client;
+    taskMap[date] = eachTask.date;
     return taskMap;
   }
 
   List<EachTaskWork> toList(List<Map<String, dynamic>> taskMap) {
     final List<EachTaskWork> taskList = [];
     for (Map<String, dynamic> eachTask in taskMap) {
-      final EachTaskWork tasks =
-          EachTaskWork(name: eachTask['name'], about: eachTask['about']);
+      final EachTaskWork tasks = EachTaskWork(
+        name: eachTask['name'],
+        about: eachTask['about'],
+        client: eachTask['client'],
+        date: eachTask['date'],
+      );
       taskList.add(tasks);
     }
     return taskList;

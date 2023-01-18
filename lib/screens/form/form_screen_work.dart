@@ -9,6 +9,8 @@ class FormScreenWork extends StatelessWidget {
 
   TextEditingController nameController = TextEditingController();
   TextEditingController aboutController = TextEditingController();
+  TextEditingController clientController = TextEditingController();
+  TextEditingController dateController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -23,6 +25,7 @@ class FormScreenWork extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
+                  keyboardType: TextInputType.name,
                   controller: nameController,
                   decoration: InputDecoration(
                       fillColor: Colors.blue[100],
@@ -30,6 +33,38 @@ class FormScreenWork extends StatelessWidget {
                       hintText: 'Título da anotação',
                       border: InputBorder.none),
                 ),
+              ),
+              Row(
+                children: [
+                  Flexible(
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: TextFormField(
+                        keyboardType: TextInputType.name,
+                        controller: clientController,
+                        decoration: InputDecoration(
+                            fillColor: Colors.blue[100],
+                            filled: true,
+                            hintText: 'cliente',
+                            border: InputBorder.none),
+                      ),
+                    ),
+                  ),
+                  Flexible(
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: TextFormField(
+                        controller: dateController,
+                        keyboardType: TextInputType.datetime,
+                        decoration: InputDecoration(
+                            fillColor: Colors.blue[100],
+                            filled: true,
+                            hintText: 'prazo de entrega',
+                            border: InputBorder.none),
+                      ),
+                    ),
+                  ),
+                ],
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -50,8 +85,11 @@ class FormScreenWork extends StatelessWidget {
                   child: ElevatedButton(
                     onPressed: () async {
                       TaskWorkDao().save(EachTaskWork(
-                          name: nameController.text,
-                          about: aboutController.text));
+                        name: nameController.text,
+                        about: aboutController.text,
+                        client: clientController.text,
+                        date: dateController.text,
+                      ));
                       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                           content: Text('Anotação salva com sucesso!')));
                       Navigator.pop(context);
