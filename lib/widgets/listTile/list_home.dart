@@ -15,7 +15,7 @@ class ListHome extends StatelessWidget {
         onPressed: () {},
         child: SizedBox(
           width: double.infinity,
-          height: 100,
+          height: 90,
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Column(

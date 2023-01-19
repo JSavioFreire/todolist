@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:todolist/screens/home/home_screen.dart';
-import 'package:todolist/screens/payed/payed_screen.dart';
-import 'package:todolist/screens/payments/pay_screen.dart';
-import 'package:todolist/screens/work/work_screen.dart';
+import 'package:todolist/screens/tasks/home/home_screen.dart';
+import 'package:todolist/screens/tasks/payed/payed_screen.dart';
+import 'package:todolist/screens/tasks/payments/pay_screen.dart';
+import 'package:todolist/screens/tasks/work/work_screen.dart';
 
 class BottomNavigationBarCustom extends StatefulWidget {
   const BottomNavigationBarCustom({super.key});

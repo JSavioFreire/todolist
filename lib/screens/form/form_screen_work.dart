@@ -63,6 +63,17 @@ class FormScreenWork extends StatelessWidget {
                       padding: const EdgeInsets.all(8.0),
                       child: TextFormField(
                         controller: dateController,
+                        onTap: () async {
+                          DateTime? date = DateTime(1900);
+                          FocusScope.of(context).requestFocus(FocusNode());
+                          date = await showDatePicker(
+                              context: context,
+                              initialDate: DateTime.now(),
+                              firstDate: DateTime(1900),
+                              lastDate: DateTime(2100));
+                          dateController.text =
+                              '${date!.day.toString()}/${date.month.toString()}/${date.year.toString()}';
+                        },
                         keyboardType: TextInputType.datetime,
                         decoration: InputDecoration(
                           fillColor: Colors.blue[100],

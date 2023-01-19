@@ -3,7 +3,7 @@ import 'package:todolist/data/pay/task_pay_db.dart';
 import 'package:todolist/screens/form/form_screen_pay.dart';
 import 'package:todolist/widgets/boxHowAdd/box_how_add.dart';
 import 'package:todolist/widgets/tasks/eachtask_pay.dart';
-import '../../widgets/loading/loading.dart';
+import '../../../widgets/loading/loading.dart';
 
 class PayScreen extends StatefulWidget {
   const PayScreen({super.key});

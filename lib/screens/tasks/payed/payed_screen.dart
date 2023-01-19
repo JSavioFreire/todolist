@@ -1,18 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:todolist/data/home/task_home_db.dart';
-import 'package:todolist/widgets/boxHowAdd/box_how_add.dart';
-import 'package:todolist/widgets/loading/loading.dart';
-import 'package:todolist/widgets/tasks/eachtask_home.dart';
-import '../form/form_screen_home.dart';
+import 'package:todolist/data/payed/task_payed_db.dart';
+import 'package:todolist/widgets/tasks/eachtask_payed.dart';
+import '../../../widgets/loading/loading.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+class PayedScreen extends StatefulWidget {
+  const PayedScreen({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<PayedScreen> createState() => _PayedScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _PayedScreenState extends State<PayedScreen> {
   void refresh() {
     setState(() {});
   }
@@ -20,10 +18,10 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: FutureBuilder<List<EachTaskHome>>(
-          future: TaskHomeDao().findAll(),
+      body: FutureBuilder<List<EachTaskPayed>>(
+          future: TaskPayedDao().findAll(),
           builder: ((context, snapshot) {
-            List<EachTaskHome>? item = snapshot.data;
+            List<EachTaskPayed>? item = snapshot.data;
             switch (snapshot.connectionState) {
               case ConnectionState.none:
                 const LoadingWidget();
@@ -40,7 +38,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     return ListView.builder(
                         itemCount: item.length,
                         itemBuilder: (context, index) {
-                          final EachTaskHome eachTask = item[index];
+                          final EachTaskPayed eachTask = item[index];
                           return eachTask;
                         });
                   }
@@ -56,11 +54,6 @@ class _HomeScreenState extends State<HomeScreen> {
                           size: 128,
                         ),
                       ),
-                      Row(
-                        children: const [
-                        BoxHowAdd()
-                        ],
-                      )
                     ],
                   ));
                 }
@@ -70,16 +63,6 @@ class _HomeScreenState extends State<HomeScreen> {
             }
             return Container();
           })),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => FormScreenHome()))
-              .then((value) {
-            refresh();
-          });
-        },
-        child: const Icon(Icons.add),
-      ),
     );
   }
 }

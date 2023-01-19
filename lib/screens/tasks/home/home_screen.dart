@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:todolist/data/payed/task_payed_db.dart';
-import 'package:todolist/widgets/tasks/eachtask_payed.dart';
-import '../../widgets/loading/loading.dart';
+import 'package:todolist/data/home/task_home_db.dart';
+import 'package:todolist/widgets/boxHowAdd/box_how_add.dart';
+import 'package:todolist/widgets/loading/loading.dart';
+import 'package:todolist/widgets/tasks/eachtask_home.dart';
+import '../../form/form_screen_home.dart';
 
-class PayedScreen extends StatefulWidget {
-  const PayedScreen({super.key});
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
 
   @override
-  State<PayedScreen> createState() => _PayedScreenState();
+  State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _PayedScreenState extends State<PayedScreen> {
+class _HomeScreenState extends State<HomeScreen> {
   void refresh() {
     setState(() {});
   }
@@ -18,10 +20,10 @@ class _PayedScreenState extends State<PayedScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: FutureBuilder<List<EachTaskPayed>>(
-          future: TaskPayedDao().findAll(),
+      body: FutureBuilder<List<EachTaskHome>>(
+          future: TaskHomeDao().findAll(),
           builder: ((context, snapshot) {
-            List<EachTaskPayed>? item = snapshot.data;
+            List<EachTaskHome>? item = snapshot.data;
             switch (snapshot.connectionState) {
               case ConnectionState.none:
                 const LoadingWidget();
@@ -38,7 +40,7 @@ class _PayedScreenState extends State<PayedScreen> {
                     return ListView.builder(
                         itemCount: item.length,
                         itemBuilder: (context, index) {
-                          final EachTaskPayed eachTask = item[index];
+                          final EachTaskHome eachTask = item[index];
                           return eachTask;
                         });
                   }
@@ -54,6 +56,11 @@ class _PayedScreenState extends State<PayedScreen> {
                           size: 128,
                         ),
                       ),
+                      Row(
+                        children: const [
+                        BoxHowAdd()
+                        ],
+                      )
                     ],
                   ));
                 }
@@ -63,6 +70,16 @@ class _PayedScreenState extends State<PayedScreen> {
             }
             return Container();
           })),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => FormScreenHome()))
+              .then((value) {
+            refresh();
+          });
+        },
+        child: const Icon(Icons.add),
+      ),
     );
   }
 }

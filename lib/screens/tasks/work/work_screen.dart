@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:todolist/widgets/boxHowAdd/box_how_add.dart';
 import 'package:todolist/widgets/loading/loading.dart';
-import '../../data/work/task_work_db.dart';
-import '../../widgets/tasks/eachtask_work.dart';
-import '../form/form_screen_work.dart';
+import '../../../data/work/task_work_db.dart';
+import '../../../widgets/tasks/eachtask_work.dart';
+import '../../form/form_screen_work.dart';
 
 class WorkScreen extends StatefulWidget {
   const WorkScreen({super.key});

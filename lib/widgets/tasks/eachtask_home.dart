@@ -17,13 +17,6 @@ class _EachTaskHomeState extends State<EachTaskHome> {
     return Dismissible(
         key: UniqueKey(),
         background: Container(
-          color: Colors.green,
-          child: const Align(
-            alignment: Alignment(-0.9, 0),
-            child: Icon(Icons.delete, color: Colors.white),
-          ),
-        ),
-        secondaryBackground: Container(
           color: Colors.red,
           child: const Align(
             alignment: Alignment(0.9, 0),
