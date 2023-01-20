@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todolist/screens/each_task/each_task_screen.dart';
 
 class ListHome extends StatelessWidget {
   final String name;
@@ -12,7 +13,15 @@ class ListHome extends StatelessWidget {
       decoration:
           BoxDecoration(border: Border.all(width: 1, color: Colors.black12)),
       child: TextButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: ((context) => EachTaskScreen(
+                        title: name,
+                        about: about,
+                      ))));
+        },
         child: SizedBox(
           width: double.infinity,
           height: 90,

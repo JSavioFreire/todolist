@@ -57,9 +57,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       ),
                       Row(
-                        children: const [
-                        BoxHowAdd()
-                        ],
+                        children: const [BoxHowAdd()],
                       )
                     ],
                   ));
