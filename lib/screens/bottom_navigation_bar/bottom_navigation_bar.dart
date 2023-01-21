@@ -3,7 +3,6 @@ import 'package:todolist/screens/tasks/home/home_screen.dart';
 import 'package:todolist/screens/tasks/payed/payed_screen.dart';
 import 'package:todolist/screens/tasks/payments/pay_screen.dart';
 import 'package:todolist/screens/tasks/work/work_screen.dart';
-import 'package:todolist/widgets/drawer/drawer_custon.dart';
 
 class BottomNavigationBarCustom extends StatefulWidget {
   const BottomNavigationBarCustom({super.key});
@@ -35,7 +34,6 @@ class _BottomNavigationBarCustom extends State<BottomNavigationBarCustom> {
       appBar: AppBar(
         title: const Text('Anotações'),
       ),
-      endDrawer: const DrawerCuston(),
       body: _widgetOptions.elementAt(_selectedIndex),
       bottomNavigationBar: BottomNavigationBar(
         items: [
