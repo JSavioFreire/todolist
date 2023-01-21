@@ -18,11 +18,10 @@ class ListWork extends StatelessWidget {
       width: MediaQuery.of(context).size.width * 1,
       decoration:
           BoxDecoration(border: Border.all(width: 1, color: Colors.black12)),
-      child: TextButton(
-        onPressed: () {},
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
         child: SizedBox(
           width: double.infinity,
-          height: 90,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -88,25 +87,24 @@ class ListWork extends StatelessWidget {
                 children: [
                   Column(
                     children: [
-                      SizedBox(
-                          width: MediaQuery.of(context).size.width * 0.6,
-                          child: about.isNotEmpty
-                              ? Text(
-                                  about,
-                                  style: TextStyle(
-                                    color: Colors.grey[900],
-                                  ),
-                                  maxLines: 2,
-                                  overflow: TextOverflow.ellipsis,
-                                )
-                              : Text(
-                                  '(Tarefa sem descrição)',
-                                  style: TextStyle(
-                                    color: Colors.grey[600],
-                                  ),
-                                  maxLines: 2,
-                                  overflow: TextOverflow.ellipsis,
-                                ))
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 10),
+                        child: SizedBox(
+                            width: MediaQuery.of(context).size.width * 0.6,
+                            child: about.isNotEmpty
+                                ? Text(
+                                    about,
+                                    style: TextStyle(
+                                      color: Colors.grey[900],
+                                    ),
+                                  )
+                                : Text(
+                                    '(Tarefa sem descrição)',
+                                    style: TextStyle(
+                                      color: Colors.grey[600],
+                                    ),
+                                  )),
+                      )
                     ],
                   ),
                   SizedBox(
